@@ -1,17 +1,22 @@
 package uk.co.ashleyfrieze.wordcount;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class WordCounter {
 	
-	private int wordsSoFar = 0;
+	private Set<String> wordsSoFar = new HashSet<>();
 
 	public void add(String sentence) {
 		if(!sentence.isEmpty()) {
-			wordsSoFar += sentence.trim().split("\\s+").length;
+			for(String word : sentence.trim().split("\\s+")) {
+				wordsSoFar.add(word);
+			}
 		}
 	}
 	
 	public int getUniqueWordsCount() {
-		return wordsSoFar;
+		return wordsSoFar.size();
 	}
 
 }

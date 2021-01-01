@@ -44,5 +44,11 @@ public class WordCounterTest {
 		counter.add("     One     two     three     ");
 		assertEquals(3, counter.getUniqueWordsCount());
 	}
+	
+	@Test
+	public void inputWithDuplicatesCountsOnlyIndividualCases() {
+		counter.add("Nine Nine Nine");
+		assertEquals(1, counter.getUniqueWordsCount());	
+	}
 
 }
