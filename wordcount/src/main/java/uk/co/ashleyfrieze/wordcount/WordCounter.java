@@ -8,10 +8,13 @@ public class WordCounter {
 	private Set<String> wordsSoFar = new HashSet<>();
 
 	public void add(String sentence) {
-		if(!sentence.isEmpty()) {
-			for(String word : sentence.trim().split("\\s+")) {
-				wordsSoFar.add(word);
-			}
+		
+		if(sentence.isEmpty()) {
+			return;
+		}
+		
+		for(String word : sentence.trim().split("\\s+")) {
+			wordsSoFar.add(word.toLowerCase());
 		}
 	}
 	
