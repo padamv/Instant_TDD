@@ -6,7 +6,7 @@ public class WordCounter {
 
 	public void add(String sentence) {
 		if(!sentence.isEmpty()) {
-			wordsSoFar += sentence.split(" ").length;
+			wordsSoFar += sentence.trim().split("\\s+").length;
 		}
 	}
 	

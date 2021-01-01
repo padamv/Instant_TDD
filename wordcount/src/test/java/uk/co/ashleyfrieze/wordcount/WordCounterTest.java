@@ -31,5 +31,18 @@ public class WordCounterTest {
 		counter.add("One two three");
 		assertEquals(3, counter.getUniqueWordsCount());
 	}
+	
+	@Test
+	public void severalMultiWordStringHasCorrectWordCount() {
+		counter.add("One two three");
+		counter.add("Four five six");
+		assertEquals(6, counter.getUniqueWordsCount());
+	}
+	
+	@Test
+	public void spacedOutMultiWordStringHasCorrectWordCount() {
+		counter.add("     One     two     three     ");
+		assertEquals(3, counter.getUniqueWordsCount());
+	}
 
 }
