@@ -56,5 +56,13 @@ public class WordCounterTest {
 		counter.add("Nine nine NINE");
 		assertEquals(1, counter.getUniqueWordsCount());	
 	}
-
+	
+	@Test
+	public void inputWithPunctuationsStillSpotsDuplicates() {
+		counter.add("Nine.");
+		counter.add("Nine ten.");
+		counter.add("Nine, ten, eleven");
+		
+		assertEquals(3, counter.getUniqueWordsCount());	
+	}
 }

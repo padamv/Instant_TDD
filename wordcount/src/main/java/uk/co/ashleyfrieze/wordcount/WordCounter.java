@@ -13,7 +13,7 @@ public class WordCounter {
 			return;
 		}
 		
-		for(String word : sentence.trim().split("\\s+")) {
+		for(String word : sentence.trim().split("[., ]+")) {
 			wordsSoFar.add(word.toLowerCase());
 		}
 	}
