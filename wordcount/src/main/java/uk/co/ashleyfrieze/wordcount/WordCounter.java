@@ -5,7 +5,9 @@ public class WordCounter {
 	private int wordsSoFar = 0;
 
 	public void add(String sentence) {
-		
+		if(!sentence.isEmpty()) {
+			wordsSoFar ++;
+		}
 	}
 	
 	public int getUniqueWordsCount() {

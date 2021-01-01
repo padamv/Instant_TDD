@@ -12,5 +12,11 @@ public class WordCounterTest {
 		counter.add("");
 		assertEquals(0, counter.getUniqueWordsCount());
 	}
+	
+	@Test
+	public void singleWordStringHasOneWord() {
+		counter.add("Hello");
+		assertEquals(1, counter.getUniqueWordsCount());
+	}
 
 }
