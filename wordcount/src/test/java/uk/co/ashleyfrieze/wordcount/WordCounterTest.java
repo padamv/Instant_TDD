@@ -18,5 +18,18 @@ public class WordCounterTest {
 		counter.add("Hello");
 		assertEquals(1, counter.getUniqueWordsCount());
 	}
+	
+	@Test
+	public void twoSingleWordStringHaveTwoWords() {
+		counter.add("Hello");
+		counter.add("Word");
+		assertEquals(2, counter.getUniqueWordsCount());
+	}
+	
+	@Test
+	public void multiWordStringHasCorrectWordCount() {
+		counter.add("One two three");
+		assertEquals(3, counter.getUniqueWordsCount());
+	}
 
 }
