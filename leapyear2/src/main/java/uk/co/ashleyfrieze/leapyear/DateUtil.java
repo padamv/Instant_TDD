@@ -8,6 +8,12 @@ public class DateUtil {
 	 */
 	public static boolean isLeapYear(int year) {
 
-		return year % 4 == 0 && year % 100 != 0;
+		return isDivisible(year, 4) && 
+				(!isDivisible( year, 100) || 
+				isDivisible(year, 400));
+	}
+	
+	private static boolean isDivisible (int year, int divisor) {
+		return year % divisor == 0;
 	}
 }
