@@ -14,16 +14,16 @@ import uk.co.ashleyfrieze.client.Channel;
 import uk.co.ashleyfrieze.database.ArticleDataAccess;
 
 public class ArticleDistributorTest {
+	Channel sport = mock(Channel.class);
+	Channel entertainment = mock(Channel.class);
+	Channel other = mock(Channel.class);
+	ArticleDataAccess dataAccess = mock(ArticleDataAccess.class);
+	
+	ArticleDistributor distributor = new ArticleDistributor(sport, entertainment, other, dataAccess);
 
 	@Test
 	public void sportGoesToSportFinanceToOther() {
-		Channel sport = mock(Channel.class);
-		Channel entertainment = mock(Channel.class);
-		Channel other = mock(Channel.class);
-		ArticleDataAccess dataAccess = mock(ArticleDataAccess.class);
-		
-		ArticleDistributor distributor = new ArticleDistributor(sport, entertainment, other, dataAccess);
-		
+
 		// given this list of articles is returned from the database
 		List<Article> list = asList(
 				new Article("Sport is fun", Type.SPORT), 
