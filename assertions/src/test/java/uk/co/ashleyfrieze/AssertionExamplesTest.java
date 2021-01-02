@@ -1,10 +1,19 @@
 package uk.co.ashleyfrieze;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import static java.util.Arrays.asList;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * Original tests using the Assert library from JUnit
@@ -86,6 +95,7 @@ public class AssertionExamplesTest {
         assertEquals(example1, duplicateOfExample1);
     }
 
+    @Ignore("Some reason")
     @Test
     public void tryAssertFail() {
         Assert.fail("This was never meant to happen");
