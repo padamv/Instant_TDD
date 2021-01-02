@@ -3,7 +3,9 @@ package co.uk.ashleyfrieze.testfolder;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Class for persisting and reading bunch of strings
@@ -28,5 +30,9 @@ public class ReaderWriter {
 			}
 		}
 		return file;
+	}
+	
+	public static List<String> read(File file) throws IOException {
+		return Files.lines(file.toPath()).collect(Collectors.toList());
 	}
 }
