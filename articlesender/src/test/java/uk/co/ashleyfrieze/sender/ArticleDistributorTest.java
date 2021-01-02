@@ -16,7 +16,7 @@ import uk.co.ashleyfrieze.database.ArticleDataAccess;
 public class ArticleDistributorTest {
 
 	@Test
-	public void test() {
+	public void sportGoesToSportFinanceToOther() {
 		Channel sport = mock(Channel.class);
 		Channel entertainment = mock(Channel.class);
 		Channel other = mock(Channel.class);
