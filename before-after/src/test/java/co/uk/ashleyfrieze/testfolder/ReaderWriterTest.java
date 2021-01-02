@@ -42,7 +42,19 @@ public class ReaderWriterTest {
 		
 		// and they match
 		assertEquals(someLines, readLines);
-
+	}
+	
+	@Test
+	public void readsZeroLinesItWrote() throws Exception {
+		// when we write the file
+		List<String> someLines = Arrays.asList();
+		writtenFile = ReaderWriter.write(tempFolder, "MyFile", someLines);
+		
+		// then we can read it back
+		List<String> readLines = ReaderWriter.read(writtenFile);
+		
+		// and they match
+		assertEquals(someLines, readLines);
 	}
 
 }
