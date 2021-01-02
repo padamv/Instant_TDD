@@ -2,24 +2,41 @@ package uk.co.ashleyfrieze.sender;
 
 import static java.util.Arrays.asList;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import uk.co.ashleyfrieze.article.Article;
 import uk.co.ashleyfrieze.article.Type;
-import uk.co.ashleyfrieze.client.Channel;
+import uk.co.ashleyfrieze.client.EntertainmentChannel;
+import uk.co.ashleyfrieze.client.OtherChannel;
+import uk.co.ashleyfrieze.client.SportsChannel;
 import uk.co.ashleyfrieze.database.ArticleDataAccess;
 
+@RunWith(MockitoJUnitRunner.class)
 public class ArticleDistributorTest {
-	Channel sport = mock(Channel.class);
-	Channel entertainment = mock(Channel.class);
-	Channel other = mock(Channel.class);
-	ArticleDataAccess dataAccess = mock(ArticleDataAccess.class);
+	@Mock
+	private SportsChannel sport;
 	
-	ArticleDistributor distributor = new ArticleDistributor(sport, entertainment, other, dataAccess);
+	@Mock
+	private EntertainmentChannel entertainment;
+	
+	@Mock
+	private OtherChannel other;
+	
+	@Mock
+	private ArticleDataAccess dataAccess;
+	
+	@InjectMocks
+	private ArticleDistributor distributor;
 
 	@Test
 	public void sportGoesToSportFinanceToOther() {
