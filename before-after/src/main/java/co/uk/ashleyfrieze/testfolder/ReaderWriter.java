@@ -32,6 +32,12 @@ public class ReaderWriter {
 		return file;
 	}
 	
+	/**
+	 * Read the lines of a given file to a list
+	 * @param file the file to read
+	 * @return the lines of the file
+	 * @throws IOException on error
+	 */
 	public static List<String> read(File file) throws IOException {
 		return Files.lines(file.toPath()).collect(Collectors.toList());
 	}
