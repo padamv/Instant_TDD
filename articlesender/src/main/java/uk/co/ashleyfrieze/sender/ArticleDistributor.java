@@ -1,5 +1,6 @@
 package uk.co.ashleyfrieze.sender;
 
+import uk.co.ashleyfrieze.article.Article;
 import uk.co.ashleyfrieze.client.Channel;
 import uk.co.ashleyfrieze.database.ArticleDataAccess;
 
@@ -20,7 +21,18 @@ public class ArticleDistributor {
 	}
 
 	public void distributeTodays() {
-		// TODO Auto-generated method stub
+		for(Article article:dataAccess.getTodaysArticles()) {
+			switch(article.getType()) {
+			case SPORT:
+				sport.accept(article);
+				break;
+			case ENTERTAINMENT:
+				entertainmet.accept(article);
+				break;
+			default:
+				other.accept(article);
+			}
+		}
 		
 	}
 
