@@ -13,8 +13,8 @@ public class CountingService {
 	}
 
 	public int getCount() {
-		return 0;
-		//return dataSource.getAll().size();
+
+		return dataSource.getAll().size();
 	}
 
 }
