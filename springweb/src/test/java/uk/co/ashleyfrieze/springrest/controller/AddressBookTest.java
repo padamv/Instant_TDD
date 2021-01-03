@@ -30,6 +30,7 @@ import uk.co.ashleyfrieze.springrest.service.AddressStorer;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AddressBookTest.TestConfig.class)
 @WebAppConfiguration
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class AddressBookTest {
     @Configuration
     @ComponentScan(basePackageClasses = Config.class)
@@ -55,6 +56,9 @@ public class AddressBookTest {
     @Autowired
     private WebApplicationContext webApplicationContext;
     
+    @Autowired
+    private AddressStorer storer;
+    
     private MockMvc mockMvc;
         
     @Before
@@ -66,6 +70,13 @@ public class AddressBookTest {
     public void unknownIsNotFound() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/address/Tom Cruise"))
                 .andExpect(status().isNotFound());
+    }
+    
+    @Test 
+    public void withKnownPersonAddressIsFound() throws Exception {
+    	storer.storeAddress("Harold", "1 King Place");
+    	mockMvc.perform(MockMvcRequestBuilders.get("/address/Harold"))
+        .andExpect(status().isOk());
     }
         
 }
