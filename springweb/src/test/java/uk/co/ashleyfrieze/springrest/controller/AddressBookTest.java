@@ -1,6 +1,7 @@
 package uk.co.ashleyfrieze.springrest.controller;
 
 import static org.junit.Assert.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.HashMap;
@@ -77,6 +78,13 @@ public class AddressBookTest {
     	storer.storeAddress("Harold", "1 King Place");
     	mockMvc.perform(MockMvcRequestBuilders.get("/address/Harold"))
         .andExpect(status().isOk());
+    }
+    
+    @Test 
+    public void withKnownPersonAddressIsCorrect() throws Exception {
+    	storer.storeAddress("Harold", "1 King Place");
+    	mockMvc.perform(MockMvcRequestBuilders.get("/address/Harold"))
+        .andExpect(content().string("1 King Place"));
     }
         
 }
