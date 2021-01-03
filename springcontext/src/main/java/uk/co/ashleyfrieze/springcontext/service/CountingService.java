@@ -12,7 +12,7 @@ public class CountingService {
         this.dataSource = dataSource;
     }
 
-    public int getCount() {
-        return dataSource.getAll().size();
-    }
+	/*
+	 * public int getCount() { return dataSource.getAll().size(); }
+	 */
 }
