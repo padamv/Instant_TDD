@@ -5,14 +5,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CountingService {
-    private DataSource dataSource;
+	private DataSource dataSource;
 
-    @Autowired
-    public CountingService(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+	@Autowired
+	public CountingService(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
 
-	/*
-	 * public int getCount() { return dataSource.getAll().size(); }
-	 */
+	public int getCount() {
+		return 0;
+		//return dataSource.getAll().size();
+	}
+
 }

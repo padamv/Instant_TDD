@@ -1,6 +1,6 @@
 package uk.co.ashleyfrieze.springcontext.service;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +24,11 @@ public class CountingServiceTest {
 	public void contextIsOk() {
 		assertNotNull(countingService);
 		assertNotNull(dataSource);
+	}
+	
+	@Test
+	public void whenNotItemsCountIsZero() {
+		assertEquals(0, countingService.getCount());
 	}
 
 }
