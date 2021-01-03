@@ -27,7 +27,10 @@ public class MockitoExamplesTest {
 
     @Test
     public void exampleTest() {
-    	when(someInterface.getMatchingSize(anyInt(), anyInt())).thenReturn(1);
+    	when(someInterface.getMatchingSize(anyInt(), anyInt()))
+    	.thenReturn(1)
+    	.thenReturn(2)
+    	.thenReturn(3);
     	
     	for(int i = 0; i < 5; i ++) {
     		System.out.println(someInterface.getMatchingSize(1, 2));
