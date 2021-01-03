@@ -1,40 +1,36 @@
 package uk.co.ashleyfrieze.leapyear;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
+@RunWith(Parameterized.class)
 public class DateUtilTest {
-
-	@Test
-	public void normalLEapYearisLeap() {
-		assertTrue(DateUtil.isLeapYear(1992));
-	}
-
-	@Test
-	public void normalLeapYearExample2IsLeap() {
-		assertTrue(DateUtil.isLeapYear(1996));
+	
+	@Parameter(0)
+	public int year;
+	
+	@Parameter(1)
+	public boolean shouldBeLeap;
+	
+	@Parameters(name="The year {0, number,####} should have leap year as {1}")
+	public static Object[][] parameters(){
+		return new Object[][] {
+			{1992, true},
+			{1996, true},
+			{1991, false},
+			{1900, false},
+			{2000, true}
+		};
 	}
 	
 	@Test
-	public void normalLEapYearisNotLeap() {
-		assertFalse(DateUtil.isLeapYear(1991));
+	public void isLeapYear() {
+		assertThat(DateUtil.isLeapYear(year), is(shouldBeLeap));
 	}
-	
-	@Test
-	public void centuryYearsAreNotLeap() {
-		assertFalse(DateUtil.isLeapYear(1900));
-	}
-	
-	@Test
-	public void year2000WasLeap() {
-		assertTrue(DateUtil.isLeapYear(2000));
-	}
-	
-	@Test
-	public void testClass() {
-		DateUtil testDateUtil = new DateUtil();
-		assertNotNull(testDateUtil);
-	}
-	
 }
