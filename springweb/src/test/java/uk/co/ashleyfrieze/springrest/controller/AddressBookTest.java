@@ -1,6 +1,7 @@
 package uk.co.ashleyfrieze.springrest.controller;
 
 import static org.junit.Assert.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -86,5 +87,18 @@ public class AddressBookTest {
     	mockMvc.perform(MockMvcRequestBuilders.get("/address/Harold"))
         .andExpect(content().string("1 King Place"));
     }
+    
+    @Test
+    public void afterAddingAddressItCanBeFound() throws Exception {
+    	mockMvc.perform(post("/address/Maud").content("Maud's House").contentType("application/text"))
+    	.andExpect(status().isOk());
+    	
+    	mockMvc.perform(MockMvcRequestBuilders.get("/address/Maud"))
+    	.andExpect(status().isOk())
+        .andExpect(content().string("Maud's House"));
+
+    }
+    
+    
         
 }
