@@ -14,7 +14,9 @@ public class DataSource {
 	public List<String> getAll() {
 		return Collections.unmodifiableList(data);
 	}
-	/*
-	 * public void add(String item) { data.add(item); }
-	 */
+
+	public void add(String item) {
+		data.add(item);
+	}
+
 }
