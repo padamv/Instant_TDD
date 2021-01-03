@@ -19,8 +19,7 @@ public class DateUtilJUnitParamsTest {
 	public void isLeapYear(int year, boolean shouldBeLeap) {
 		assertThat(DateUtil.isLeapYear(year), is(shouldBeLeap));
 	}
-	
-	private Object parametersForLeapYear() {
+	private Object parametersForIsLeapYear() {
 		return new Object [][] {
 			{1992, true},
 			{1996, true},
