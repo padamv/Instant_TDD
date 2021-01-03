@@ -14,17 +14,19 @@ import junitparams.naming.TestCaseName;
 public class DateUtilJUnitParamsTest {
 	
 	@Test
-	@Parameters({
-		"1992, true",
-		"1996, true",
-		"1991, fales",
-		"1900, false",
-		"2000, true",
-	})
+	@Parameters
 	@TestCaseName("The year {0} should have is leap as {1}")
 	public void isLeapYear(int year, boolean shouldBeLeap) {
 		assertThat(DateUtil.isLeapYear(year), is(shouldBeLeap));
 	}
 	
-	
+	private Object parametersForLeapYear() {
+		return new Object [][] {
+			{1992, true},
+			{1996, true},
+			{1991, false},
+			{1900, false},
+			{2000, true}
+		};
+	}
 }
