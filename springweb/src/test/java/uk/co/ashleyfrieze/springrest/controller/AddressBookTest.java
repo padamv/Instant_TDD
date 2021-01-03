@@ -99,6 +99,19 @@ public class AddressBookTest {
 
     }
     
-    
-        
+    @Test
+    public void afterAddingAndAddressItCanBeDeleted() throws Exception {
+        mockMvc.perform(post("/address/Maud").content("Maud's House").contentType("application/text"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/address/Maud"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/address/Maud"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/address/Maud"))
+                .andExpect(status().isNotFound());
+    }
+      
 }
